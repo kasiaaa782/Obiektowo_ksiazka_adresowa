@@ -9,6 +9,7 @@
 
 #include "Uzytkownik.h"
 #include "PlikZUzytkownikami.h"
+#include "MenuUzytkownika.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class UzytkownikMenadzer{
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
     PlikZUzytkownikami plikZUzytkownikami;
+    MenuUzytkownika menuUzytkownika;
     char wybierzOpcjeZMenuGlownego();
 
 public:
@@ -29,10 +31,9 @@ public:
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
-    void logowanieUzytkownika();
+    int logowanieUzytkownika();
     void menuGlowne();
 
-    int pobierzIdZalogowanegoUzytkownika();
 };
 
 #endif

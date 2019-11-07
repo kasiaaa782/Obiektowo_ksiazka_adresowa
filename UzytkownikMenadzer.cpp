@@ -1,9 +1,5 @@
 #include "UzytkownikMenadzer.h"
 
-int UzytkownikMenadzer::pobierzIdZalogowanegoUzytkownika(){
-    return idZalogowanegoUzytkownika;
-}
-
 void UzytkownikMenadzer::rejestracjaUzytkownika() {
     system("cls");
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
@@ -63,7 +59,7 @@ void UzytkownikMenadzer::wczytajUzytkownikowZPliku(){
    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
-void UzytkownikMenadzer::logowanieUzytkownika(){
+int UzytkownikMenadzer::logowanieUzytkownika(){
     system("cls");
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
@@ -85,33 +81,32 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    idZalogowanegoUzytkownika = itr -> pobierzId();
-                    exit(0);
+                    return itr -> pobierzId();
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
+            return 0;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
+    return 0;
 }
 
 void UzytkownikMenadzer::menuGlowne(){
-
-    if (pobierzIdZalogowanegoUzytkownika() == 0)
-        {
+    while (true){
+        if (idZalogowanegoUzytkownika == 0){
             char wybor;
             wybor = wybierzOpcjeZMenuGlownego();
 
-            switch (wybor)
-            {
+            switch (wybor){
             case '1':
                 rejestracjaUzytkownika();
                 break;
             case '2':
-                logowanieUzytkownika();
+                idZalogowanegoUzytkownika = logowanieUzytkownika();
                 break;
             case '9':
                 exit(0);
@@ -120,9 +115,19 @@ void UzytkownikMenadzer::menuGlowne(){
                 cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
                 system("pause");
                 break;
+                }
             }
+            else {
+            /*
+            if (adresaci.empty() == true)
+                // Pobieramy idOstatniegoAdresata, po to aby zoptymalizowac program.
+                // Dzieki temu, kiedy uztykwonik bedzie dodawal nowego adresata
+                // to nie bedziemy musieli jeszcze raz ustalac idOstatniegoAdresata
+                idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
+            */
+            idZalogowanegoUzytkownika = menuUzytkownika.menuUzytkownika();
         }
-
+    }
 }
 
 char UzytkownikMenadzer::wybierzOpcjeZMenuGlownego(){
