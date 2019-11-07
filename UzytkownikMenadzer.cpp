@@ -69,7 +69,7 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
     string login = "", haslo = "";
 
     cout << "Podaj login: ";
-    login = wczytajLinie();
+    login = MetodyPomocnicze::wczytajLinie();
 
     vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
     while (itr != uzytkownicy.end())
@@ -79,7 +79,7 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
             for (int iloscProb = 3; iloscProb > 0; iloscProb--)
             {
                 cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                haslo = wczytajLinie();
+                haslo = MetodyPomocnicze::wczytajLinie();
 
                 if (itr -> pobierzHaslo() == haslo)
                 {
@@ -96,12 +96,6 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
-}
-
-string UzytkownikMenadzer::wczytajLinie() {
-    string wejscie = "";
-    getline(cin, wejscie);
-    return wejscie;
 }
 
 void UzytkownikMenadzer::menuGlowne(){
@@ -142,25 +136,8 @@ char UzytkownikMenadzer::wybierzOpcjeZMenuGlownego(){
     cout << "9. Koniec programu" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
-    wybor = wczytajZnak();
+    wybor = MetodyPomocnicze::wczytajZnak();
 
     return wybor;
 }
 
-char UzytkownikMenadzer::wczytajZnak(){
-    string wejscie = "";
-    char znak  = {0};
-
-    while (true)
-    {
-        getline(cin, wejscie);
-
-        if (wejscie.length() == 1)
-        {
-            znak = wejscie[0];
-            break;
-        }
-        cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
-    }
-    return znak;
-}

@@ -8,6 +8,7 @@ int main()
 {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt");
     //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
+
     ksiazkaAdresowa.menuGlowne();
 
     return 0;

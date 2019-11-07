@@ -20,9 +20,7 @@ class UzytkownikMenadzer{
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
     PlikZUzytkownikami plikZUzytkownikami;
-    string wczytajLinie();
     char wybierzOpcjeZMenuGlownego();
-    char wczytajZnak();
 
 public:
     UzytkownikMenadzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami){
