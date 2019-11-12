@@ -59,6 +59,11 @@ void UzytkownikMenadzer::wczytajUzytkownikowZPliku(){
    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
 
+void UzytkownikMenadzer::zapiszUzytkownikowDoPliku(){
+   plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+}
+
+
 int UzytkownikMenadzer::logowanieUzytkownika(){
     system("cls");
     Uzytkownik uzytkownik;
@@ -125,7 +130,9 @@ void UzytkownikMenadzer::menuGlowne(){
                 // to nie bedziemy musieli jeszcze raz ustalac idOstatniegoAdresata
                 idOstatniegoAdresata = wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika);
             */
-            idZalogowanegoUzytkownika = menuUzytkownika.menuUzytkownika();
+            idZalogowanegoUzytkownika = menuUzytkownika.menuUzytkownika(uzytkownicy, idZalogowanegoUzytkownika);
+            zapiszUzytkownikowDoPliku();
+            wczytajUzytkownikowZPliku();
         }
     }
 }
@@ -133,7 +140,8 @@ void UzytkownikMenadzer::menuGlowne(){
 char UzytkownikMenadzer::wybierzOpcjeZMenuGlownego(){
     char wybor;
 
-    system("cls");
+    //system("cls");
+    wypiszWszystkichUzytkownikow();
     cout << "    >>> MENU  GLOWNE <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Rejestracja" << endl;

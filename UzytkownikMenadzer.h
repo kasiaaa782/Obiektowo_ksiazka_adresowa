@@ -24,15 +24,19 @@ class UzytkownikMenadzer{
     MenuUzytkownika menuUzytkownika;
     char wybierzOpcjeZMenuGlownego();
 
+
 public:
     UzytkownikMenadzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami){
         idZalogowanegoUzytkownika = 0;
+
     };
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
+    void zapiszUzytkownikowDoPliku();
     int logowanieUzytkownika();
     void menuGlowne();
+
 
 };
 
