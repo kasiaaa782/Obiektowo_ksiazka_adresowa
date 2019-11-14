@@ -60,8 +60,6 @@ void UzytkownikMenadzer::wypiszWszystkichUzytkownikow() {
 }
 
 void UzytkownikMenadzer::logowanieUzytkownika(){
-    system("cls");
-    Uzytkownik uzytkownik;
     string login = "", haslo = "";
 
     cout << "Podaj login: ";
@@ -82,11 +80,13 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     idZalogowanegoUzytkownika = itr -> pobierzId();
-                    exit(0);
+                    return;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
+
+            return;
         }
         itr++;
     }
@@ -94,3 +94,14 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
     system("pause");
 }
 
+void UzytkownikMenadzer::wylogowanieUzytkownika(){
+    idZalogowanegoUzytkownika = 0;
+}
+
+bool UzytkownikMenadzer::czyUzytkownikJestZalogowany(){
+    if(idZalogowanegoUzytkownika > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
