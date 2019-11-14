@@ -21,6 +21,12 @@ void KsiazkaAdresowa::wylogowanieUzytkownika(){
     adresatMenadzer = NULL;
 }
 
-/*void KsiazkaAdresowa::dodajAdresata(){
-    uzytkownikMenadzer.dodajAdresata();
-}*/
+void KsiazkaAdresowa::dodajAdresata(){
+    if(uzytkownikMenadzer.czyUzytkownikJestZalogowany()){
+        adresatMenadzer ->dodajAdresata();
+    }
+    else {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}

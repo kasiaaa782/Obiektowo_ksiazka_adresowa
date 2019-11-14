@@ -45,3 +45,35 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
     }
     return liczba;
 }
+
+int MetodyPomocnicze::wczytajLiczbeCalkowita(){
+    string wejscie = "";
+    int liczba = 0;
+
+    while(true){
+        getline(cin, wejscie);
+        stringstream myStream(wejscie);
+        if(myStream >> liczba){
+            break;
+        }
+        cout << "To nie jest liczba. Wpisz ponownie." << endl;
+    }
+    return liczba;
+}
+
+string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst){
+    if (!tekst.empty())
+    {
+        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
+        tekst[0] = toupper(tekst[0]);
+    }
+    return tekst;
+}
+
+bool MetodyPomocnicze::czyPlikJestPusty(fstream &plikTekstowy){
+    plikTekstowy.seekg(0, ios::end);
+    if (plikTekstowy.tellg() == 0)
+        return true;
+    else
+        return false;
+}
