@@ -5,7 +5,7 @@ int UzytkownikMenadzer::pobierzIdZalogowanegoUzytkownika(){
 }
 
 void UzytkownikMenadzer::rejestracjaUzytkownika() {
-    system("cls");
+    //system("cls");
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
@@ -96,48 +96,5 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
-}
-
-void UzytkownikMenadzer::menuGlowne(){
-
-    if (pobierzIdZalogowanegoUzytkownika() == 0)
-        {
-            char wybor;
-            wybor = wybierzOpcjeZMenuGlownego();
-
-            switch (wybor)
-            {
-            case '1':
-                rejestracjaUzytkownika();
-                break;
-            case '2':
-                logowanieUzytkownika();
-                break;
-            case '9':
-                exit(0);
-                break;
-            default:
-                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
-                system("pause");
-                break;
-            }
-        }
-
-}
-
-char UzytkownikMenadzer::wybierzOpcjeZMenuGlownego(){
-    char wybor;
-
-    system("cls");
-    cout << "    >>> MENU  GLOWNE <<<" << endl;
-    cout << "---------------------------" << endl;
-    cout << "1. Rejestracja" << endl;
-    cout << "2. Logowanie" << endl;
-    cout << "9. Koniec programu" << endl;
-    cout << "---------------------------" << endl;
-    cout << "Twoj wybor: ";
-    wybor = MetodyPomocnicze::wczytajZnak();
-
-    return wybor;
 }
 

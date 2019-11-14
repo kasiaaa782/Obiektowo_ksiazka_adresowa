@@ -30,7 +30,6 @@ public:
     void wypiszWszystkichUzytkownikow();
     void wczytajUzytkownikowZPliku();
     void logowanieUzytkownika();
-    void menuGlowne();
 
     int pobierzIdZalogowanegoUzytkownika();
 };

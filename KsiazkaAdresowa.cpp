@@ -4,6 +4,6 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow(){
     uzytkownikMenadzer.wypiszWszystkichUzytkownikow();
 }
 
-void KsiazkaAdresowa::menuGlowne(){
-    uzytkownikMenadzer.menuGlowne();
+void KsiazkaAdresowa::rejestracjaUzytkownika(){
+    uzytkownikMenadzer.rejestracjaUzytkownika();
 }
