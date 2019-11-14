@@ -59,9 +59,7 @@ void UzytkownikMenadzer::wypiszWszystkichUzytkownikow() {
     }
 }
 
-void UzytkownikMenadzer::logowanieUzytkownika(){
-    system("cls");
-    Uzytkownik uzytkownik;
+int UzytkownikMenadzer::logowanieUzytkownika(){
     string login = "", haslo = "";
 
     cout << "Podaj login: ";
@@ -82,11 +80,13 @@ void UzytkownikMenadzer::logowanieUzytkownika(){
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     idZalogowanegoUzytkownika = itr -> pobierzId();
-                    exit(0);
+                    return idZalogowanegoUzytkownika;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
+
+            return 0;
         }
         itr++;
     }
