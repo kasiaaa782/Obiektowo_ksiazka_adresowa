@@ -16,7 +16,6 @@ using namespace std;
 class UzytkownikMenadzer{
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;
-    vector <Adresat> adresaci;
 
     Uzytkownik podajDaneNowegoUzytkownika();
     int pobierzIdNowegoUzytkownika();
