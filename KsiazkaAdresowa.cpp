@@ -12,3 +12,6 @@ void KsiazkaAdresowa::logowanieUzytkownika(){
     uzytkownikMenadzer.logowanieUzytkownika();
 }
 
+/*void KsiazkaAdresowa::dodajAdresata(){
+    uzytkownikMenadzer.dodajAdresata();
+}*/
