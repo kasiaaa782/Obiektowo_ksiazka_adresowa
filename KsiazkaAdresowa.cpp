@@ -10,7 +10,15 @@ void KsiazkaAdresowa::rejestracjaUzytkownika(){
 
 void KsiazkaAdresowa::logowanieUzytkownika(){
     uzytkownikMenadzer.logowanieUzytkownika();
-    adresatMenadzer.wczytajAdresatowZalogowanegoUzytkownika(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
+    if(uzytkownikMenadzer.czyUzytkownikJestZalogowany()){
+        adresatMenadzer = new AdresatMenadzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
+    }
+}
+
+void KsiazkaAdresowa::wylogowanieUzytkownika(){
+    uzytkownikMenadzer.wylogowanieUzytkownika();
+    delete adresatMenadzer;
+    adresatMenadzer = NULL;
 }
 
 /*void KsiazkaAdresowa::dodajAdresata(){

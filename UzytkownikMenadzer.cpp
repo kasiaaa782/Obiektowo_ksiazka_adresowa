@@ -59,7 +59,7 @@ void UzytkownikMenadzer::wypiszWszystkichUzytkownikow() {
     }
 }
 
-int UzytkownikMenadzer::logowanieUzytkownika(){
+void UzytkownikMenadzer::logowanieUzytkownika(){
     string login = "", haslo = "";
 
     cout << "Podaj login: ";
@@ -80,13 +80,13 @@ int UzytkownikMenadzer::logowanieUzytkownika(){
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     idZalogowanegoUzytkownika = itr -> pobierzId();
-                    return idZalogowanegoUzytkownika;
+                    return;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
 
-            return 0;
+            return;
         }
         itr++;
     }
@@ -94,3 +94,14 @@ int UzytkownikMenadzer::logowanieUzytkownika(){
     system("pause");
 }
 
+void UzytkownikMenadzer::wylogowanieUzytkownika(){
+    idZalogowanegoUzytkownika = 0;
+}
+
+bool UzytkownikMenadzer::czyUzytkownikJestZalogowany(){
+    if(idZalogowanegoUzytkownika > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
