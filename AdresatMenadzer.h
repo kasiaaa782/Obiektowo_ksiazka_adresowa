@@ -18,7 +18,7 @@ class AdresatMenadzer{
 
 public:
     AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami){};
-
+    void wczytajAdresatowZalogowanegoUzytkownika(int idZalogowanegoUzytkownika);
 
 
 };

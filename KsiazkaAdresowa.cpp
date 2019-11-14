@@ -10,6 +10,7 @@ void KsiazkaAdresowa::rejestracjaUzytkownika(){
 
 void KsiazkaAdresowa::logowanieUzytkownika(){
     uzytkownikMenadzer.logowanieUzytkownika();
+    adresatMenadzer.wczytajAdresatowZalogowanegoUzytkownika(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
 }
 
 /*void KsiazkaAdresowa::dodajAdresata(){
