@@ -2,7 +2,6 @@
 
 void AdresatMenadzer::dodajAdresata(){
     Adresat adresat;
-
     //system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
     adresat = podajDaneNowegoAdresata();
@@ -49,8 +48,7 @@ Adresat AdresatMenadzer::podajDaneNowegoAdresata(){
     return adresat;
 }
 
-/*void AdresatMenadzer::wyswietlWszystkichAdresatow(vector <Adresat> &adresaci)
-{
+void AdresatMenadzer::wyswietlWszystkichAdresatow(){
     //system("cls");
     if (!adresaci.empty())
     {
@@ -67,4 +65,13 @@ Adresat AdresatMenadzer::podajDaneNowegoAdresata(){
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
-}*/
+}
+
+void AdresatMenadzer::wyswietlDaneAdresata(Adresat adresat){
+    cout << endl << "Id:                 " << adresat.pobierzId() << endl;
+    cout << "Imie:               " << adresat.pobierzImie() << endl;
+    cout << "Nazwisko:           " << adresat.pobierzNazwisko() << endl;
+    cout << "Numer telefonu:     " << adresat.pobierzNumerTelefonu() << endl;
+    cout << "Email:              " << adresat.pobierzEmail() << endl;
+    cout << "Adres:              " << adresat.pobierzAdres() << endl;
+}

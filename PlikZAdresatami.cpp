@@ -7,7 +7,6 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
 vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) {
     Adresat adresat;
     vector <Adresat> adresaci;
-    idOstatniegoAdresata = 0;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
@@ -21,10 +20,8 @@ vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(
             }
         }
         daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
-    } else
-        cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
-
-    plikTekstowy.close();
+        plikTekstowy.close();
+    }
 
     if (daneOstaniegoAdresataWPliku != "") {
         idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);

@@ -15,6 +15,10 @@ void KsiazkaAdresowa::logowanieUzytkownika(){
     }
 }
 
+void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika(){
+    uzytkownikMenadzer.zmianaHaslaZalogowanegoUzytkownika();
+}
+
 void KsiazkaAdresowa::wylogowanieUzytkownika(){
     uzytkownikMenadzer.wylogowanieUzytkownika();
     delete adresatMenadzer;
@@ -27,6 +31,16 @@ void KsiazkaAdresowa::dodajAdresata(){
     }
     else {
         cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void KsiazkaAdresowa::wyswietlWszystkichAdresatow(){
+    if(uzytkownikMenadzer.czyUzytkownikJestZalogowany()){
+        adresatMenadzer->wyswietlWszystkichAdresatow();
+    }
+    else {
+        cout << "Aby wyswietlic wszystkich uzytkownikow, najpierw nalezy sie zalogowac" << endl;
         system("pause");
     }
 }
