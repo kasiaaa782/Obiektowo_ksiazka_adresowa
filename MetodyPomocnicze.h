@@ -18,9 +18,6 @@ public:
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
     static int wczytajLiczbeCalkowita();
     static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
-    static bool czyPlikJestPusty(fstream &plikTekstowy);
-
-
 };
 
 #endif
