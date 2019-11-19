@@ -21,6 +21,7 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika(){
 
 void KsiazkaAdresowa::wylogowanieUzytkownika(){
     uzytkownikMenadzer.wylogowanieUzytkownika();
+    adresatMenadzer->wylogowanieUzytkownika();
     delete adresatMenadzer;
     adresatMenadzer = NULL;
 }
@@ -43,4 +44,28 @@ void KsiazkaAdresowa::wyswietlWszystkichAdresatow(){
         cout << "Aby wyswietlic wszystkich uzytkownikow, najpierw nalezy sie zalogowac" << endl;
         system("pause");
     }
+}
+
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany(){
+    uzytkownikMenadzer.czyUzytkownikJestZalogowany();
+}
+
+char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego(){
+    char wybor;
+
+    system("cls");
+    cout << "    >>> MENU  GLOWNE <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Rejestracja" << endl;
+    cout << "2. Logowanie" << endl;
+    cout << "9. Koniec programu" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    wybor = MetodyPomocnicze::wczytajZnak();
+
+    return wybor;
+}
+
+char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika(){
+    adresatMenadzer->wybierzOpcjeZMenuUzytkownika();
 }

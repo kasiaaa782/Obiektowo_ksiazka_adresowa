@@ -2,7 +2,7 @@
 
 void AdresatMenadzer::dodajAdresata(){
     Adresat adresat;
-    //system("cls");
+    system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
     adresat = podajDaneNowegoAdresata();
 
@@ -49,9 +49,8 @@ Adresat AdresatMenadzer::podajDaneNowegoAdresata(){
 }
 
 void AdresatMenadzer::wyswietlWszystkichAdresatow(){
-    //system("cls");
-    if (!adresaci.empty())
-    {
+    system("cls");
+    if (!adresaci.empty()){
         cout << "             >>> ADRESACI <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
@@ -60,8 +59,7 @@ void AdresatMenadzer::wyswietlWszystkichAdresatow(){
         }
         cout << endl;
     }
-    else
-    {
+    else{
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
@@ -74,4 +72,28 @@ void AdresatMenadzer::wyswietlDaneAdresata(Adresat adresat){
     cout << "Numer telefonu:     " << adresat.pobierzNumerTelefonu() << endl;
     cout << "Email:              " << adresat.pobierzEmail() << endl;
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
+}
+
+char AdresatMenadzer::wybierzOpcjeZMenuUzytkownika(){
+    char wybor;
+    system("cls");
+    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Dodaj adresata" << endl;
+    cout << "2. Wyszukaj po imieniu" << endl;
+    cout << "3. Wyszukaj po nazwisku" << endl;
+    cout << "4. Wyswietl adresatow" << endl;
+    cout << "5. Usun adresata" << endl;
+    cout << "6. Edytuj adresata" << endl;
+    cout << "---------------------------" << endl;
+    cout << "7. Zmien haslo" << endl;
+    cout << "8. Wyloguj sie" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    wybor = MetodyPomocnicze::wczytajZnak();
+    return wybor;
+}
+
+void AdresatMenadzer::wylogowanieUzytkownika(){
+    adresaci.clear();
 }

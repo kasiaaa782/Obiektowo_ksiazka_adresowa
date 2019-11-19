@@ -28,6 +28,8 @@ public:
     };
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    char wybierzOpcjeZMenuUzytkownika();
+    void wylogowanieUzytkownika();
 };
 
 #endif
