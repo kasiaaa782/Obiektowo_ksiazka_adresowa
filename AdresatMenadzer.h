@@ -20,6 +20,8 @@ class AdresatMenadzer{
 
     Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
+    int podajIdWybranegoAdresata();
+
 
 public:
     AdresatMenadzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
@@ -30,6 +32,7 @@ public:
     void wyswietlWszystkichAdresatow();
     char wybierzOpcjeZMenuUzytkownika();
     void wylogowanieUzytkownika();
+    void usunAdresata();
 };
 
 #endif

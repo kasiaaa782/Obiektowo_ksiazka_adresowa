@@ -40,8 +40,7 @@ int main() {
                 ksiazkaAdresowa.wyswietlWszystkichAdresatow();
                 break;
             case '5':
-                //idUsunietegoAdresata = usunAdresata(adresaci);
-                //idOstatniegoAdresata = podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresata(idUsunietegoAdresata, idOstatniegoAdresata);
+                ksiazkaAdresowa.usunAdresata();
                 break;
             case '6':
                 //edytujAdresata(adresaci);
@@ -58,3 +57,16 @@ int main() {
     return 0;
 }
 
+
+#include "AdresatMenadzer.h"
+#include "UzytkownikMenadzer.h"
+#include "PlikZAdresatami.h"
+
+
+//testy dla edytowania adresata
+int _main() {
+
+    AdresatMenadzer adresatMenadzer("Adresaci.txt", 1);
+    PlikZAdresatami plikZAdresatami("Adresaci.txt");
+    plikZAdresatami.usunWybranegoAdresataZPliku(2);
+}
