@@ -6,7 +6,6 @@
 #include "UzytkownikMenadzer.h"
 #include "AdresatMenadzer.h"
 
-
 using namespace std;
 
 class KsiazkaAdresowa{
@@ -26,16 +25,13 @@ public:
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     void logowanieUzytkownika();
-
-    void dodajAdresata();
-    /*
     void zmianaHaslaZalogowanegoUzytkownika();
-
-    void wyswietlWszystkichAdresatow();*/
-
     void wylogowanieUzytkownika();
-
-
+    void dodajAdresata();
+    void wyswietlWszystkichAdresatow();
+    bool czyUzytkownikJestZalogowany();
+    char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
 };
 
 #endif
