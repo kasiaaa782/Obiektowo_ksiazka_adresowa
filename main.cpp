@@ -43,7 +43,7 @@ int main() {
                 ksiazkaAdresowa.usunAdresata();
                 break;
             case '6':
-                //edytujAdresata(adresaci);
+                ksiazkaAdresowa.edytujAdresata();
                 break;
             case '7':
                 ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
@@ -68,5 +68,5 @@ int _main() {
 
     AdresatMenadzer adresatMenadzer("Adresaci.txt", 1);
     PlikZAdresatami plikZAdresatami("Adresaci.txt");
-    plikZAdresatami.usunWybranegoAdresataZPliku(2);
+    adresatMenadzer.edytujAdresata();
 }

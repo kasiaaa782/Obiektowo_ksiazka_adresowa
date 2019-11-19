@@ -91,7 +91,17 @@ void KsiazkaAdresowa::usunAdresata(){
         adresatMenadzer->usunAdresata();
     }
     else {
-        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        cout << "Aby usunac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void KsiazkaAdresowa::edytujAdresata(){
+    if(uzytkownikMenadzer.czyUzytkownikJestZalogowany()){
+        adresatMenadzer->edytujAdresata();
+    }
+    else {
+        cout << "Aby edytowac adresata, nalezy najpierw sie zalogowac" << endl;
         system("pause");
     }
 }
