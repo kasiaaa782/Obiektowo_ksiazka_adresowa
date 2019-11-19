@@ -105,3 +105,23 @@ void KsiazkaAdresowa::edytujAdresata(){
         system("pause");
     }
 }
+
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu(){
+    if(uzytkownikMenadzer.czyUzytkownikJestZalogowany()){
+        adresatMenadzer->wyszukajAdresatowPoImieniu();
+    }
+    else {
+        cout << "Aby wyswietlic adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku(){
+    if(uzytkownikMenadzer.czyUzytkownikJestZalogowany()){
+        adresatMenadzer->wyszukajAdresatowPoNazwisku();
+    }
+    else {
+        cout << "Aby wyswietlic adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
