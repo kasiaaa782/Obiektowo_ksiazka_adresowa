@@ -6,7 +6,6 @@ using namespace std;
 
 int main() {
     KsiazkaAdresowa ksiazkaAdresowa("Uzytkownicy.txt", "Adresaci.txt");
-
     while (true) {
         if (ksiazkaAdresowa.czyUzytkownikJestZalogowany() == false) {
 
@@ -56,3 +55,4 @@ int main() {
     }
     return 0;
 }
+

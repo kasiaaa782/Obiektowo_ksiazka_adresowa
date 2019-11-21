@@ -4,6 +4,11 @@ int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
     return idOstatniegoAdresata;
 }
 
+void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata) {
+    if(noweIdOstatniegoAdresata >= 0)
+        idOstatniegoAdresata = noweIdOstatniegoAdresata;
+}
+
 vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) {
     Adresat adresat;
     vector <Adresat> adresaci;
@@ -117,7 +122,7 @@ string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKre
     return liniaZDanymiAdresata;
 }
 
-void PlikZAdresatami::usunWybranegoAdresataZPliku(int idAdresata) {
+void PlikZAdresatami::usunWybranegoAdresataZPliku(int idUsuwanegoAdresata) {
 
     string nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
@@ -126,15 +131,30 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idAdresata) {
     odczytywanyPlikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
-    if (odczytywanyPlikTekstowy.good() == true && idAdresata != 0) {
+    int numerWczytanejLinii = 1;
+    int numerUsuwanejLinii = 0;
+    if (odczytywanyPlikTekstowy.good() == true && idUsuwanegoAdresata != 0) {
         while(getline(odczytywanyPlikTekstowy, wczytanaLinia)) {
-            if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {}
-            else {
-                tymczasowyPlikTekstowy << wczytanaLinia << endl;
+            if(idUsuwanegoAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {
+                numerUsuwanejLinii = numerWczytanejLinii;
             }
+
+            // Tych przypadkow jest tyle, gdyz chcemy osiagnac taki efekt,
+            // aby na koncu pliku nie bylo pustej linii
+            if (numerWczytanejLinii == numerUsuwanejLinii) {}
+            else if (numerWczytanejLinii == 1 && numerWczytanejLinii != numerUsuwanejLinii)
+                tymczasowyPlikTekstowy << wczytanaLinia;
+            else if (numerWczytanejLinii == 2 && numerUsuwanejLinii == 1)
+                tymczasowyPlikTekstowy << wczytanaLinia;
+            else if (numerWczytanejLinii > 2 && numerUsuwanejLinii == 1)
+                tymczasowyPlikTekstowy << endl << wczytanaLinia;
+            else if (numerWczytanejLinii > 1 && numerUsuwanejLinii != 1)
+                tymczasowyPlikTekstowy << endl << wczytanaLinia;
+
+            numerWczytanejLinii++;
         }
     } else {
-        cout << "Nie uda³o siê zapisac zmian do pliku" << endl;
+        cout << "Nie udalo sie zapisac zmian do pliku" << endl;
     }
 
     odczytywanyPlikTekstowy.close();
@@ -142,6 +162,32 @@ void PlikZAdresatami::usunWybranegoAdresataZPliku(int idAdresata) {
 
     usunPlik(pobierzNazwePliku());
     zmienNazwePliku(nazwaTymczasowegoPlikuZAdresatami, pobierzNazwePliku());
+}
+
+int PlikZAdresatami::podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresataZPliku(int idUsunietegoAdresata) {
+    if (idUsunietegoAdresata == idOstatniegoAdresata)
+        return pobierzZPlikuIdOstatniegoAdresata();
+    else
+        return idOstatniegoAdresata;
+}
+
+int PlikZAdresatami::pobierzZPlikuIdOstatniegoAdresata() {
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    string daneOstaniegoAdresataWPliku = "";
+    fstream plikTekstowy;
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
+
+    if (plikTekstowy.good() == true) {
+        while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {}
+        daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
+        plikTekstowy.close();
+    } else
+        cout << "Nie udalo sie otworzyc pliku i wczytac danych." << endl;
+
+    if (daneOstaniegoAdresataWPliku != "") {
+        idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
+    }
+    return idOstatniegoAdresata;
 }
 
 void PlikZAdresatami::usunPlik(string nazwaPlikuZRozszerzeniem) {
@@ -161,21 +207,33 @@ void PlikZAdresatami::edytujAdresataWPliku(Adresat adresat) {
     string nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
     string wczytanaLinia = "";
+    int numerWczytanejLinii = 1;
+    int numerEdytowanejLinii = 0;
 
     odczytywanyPlikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
 
     if (odczytywanyPlikTekstowy.good() == true && adresat.pobierzId() != 0) {
         while(getline(odczytywanyPlikTekstowy, wczytanaLinia)) {
-            if(adresat.pobierzId() == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {
-                tymczasowyPlikTekstowy << zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat) << endl;
 
-            } else {
-                tymczasowyPlikTekstowy << wczytanaLinia << endl;
+            if(adresat.pobierzId() == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(wczytanaLinia)) {
+                numerEdytowanejLinii = numerWczytanejLinii;
             }
+            if(numerWczytanejLinii == numerEdytowanejLinii) {
+                if (numerWczytanejLinii == 1)
+                    tymczasowyPlikTekstowy << zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
+                else if (numerWczytanejLinii > 1)
+                    tymczasowyPlikTekstowy << endl << zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(adresat);
+            } else {
+                if (numerWczytanejLinii == 1)
+                    tymczasowyPlikTekstowy << wczytanaLinia;
+                else if (numerWczytanejLinii > 1)
+                    tymczasowyPlikTekstowy << endl << wczytanaLinia;
+            }
+            numerWczytanejLinii++;
         }
     } else {
-        cout << "Nie uda³o siê zapisac zmian do pliku" << endl;
+        cout << "Nie udalo sie zapisac zmian do pliku" << endl;
     }
 
     odczytywanyPlikTekstowy.close();

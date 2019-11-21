@@ -88,7 +88,8 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika(){
 
 void KsiazkaAdresowa::usunAdresata(){
     if(uzytkownikMenadzer.czyUzytkownikJestZalogowany()){
-        adresatMenadzer->usunAdresata();
+        adresatMenadzer->usuwanieAdresata();
+
     }
     else {
         cout << "Aby usunac adresata, nalezy najpierw sie zalogowac" << endl;

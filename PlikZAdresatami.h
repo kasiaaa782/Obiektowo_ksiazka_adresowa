@@ -23,6 +23,7 @@ class PlikZAdresatami : public PlikTekstowy{
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     void usunPlik(string nazwaPlikuZRozszerzeniem);
     void zmienNazwePliku(string staraNazwa, string nowaNazwa);
+    int pobierzZPlikuIdOstatniegoAdresata();
 
 public:
     PlikZAdresatami(string nazwaPliku) : PlikTekstowy(nazwaPliku){
@@ -30,9 +31,12 @@ public:
     };
     bool dopiszAdresataDoPliku(Adresat adresat);
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-    int pobierzIdOstatniegoAdresata();
     void usunWybranegoAdresataZPliku(int idUsuwanegoAdresata);
     void edytujAdresataWPliku(Adresat adresat);
+    int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresataZPliku(int idUsunietegoAdresata);
+
+    int pobierzIdOstatniegoAdresata();
+    void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
 
 };
 
