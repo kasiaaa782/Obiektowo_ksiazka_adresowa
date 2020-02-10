@@ -5,7 +5,7 @@ int UzytkownikMenadzer::pobierzIdZalogowanegoUzytkownika() {
 }
 
 void UzytkownikMenadzer::rejestracjaUzytkownika() {
-    //system("cls");
+    system("cls");
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
@@ -26,10 +26,13 @@ Uzytkownik UzytkownikMenadzer::podajDaneNowegoUzytkownika() {
         uzytkownik.ustawLogin(login);
     } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
+
     string haslo;
     cout << "Podaj haslo: ";
     cin >> haslo;
     uzytkownik.ustawHaslo(haslo);
+    std::cin.clear();
+    std::cin.ignore();
 
     return uzytkownik;
 }
@@ -60,6 +63,7 @@ void UzytkownikMenadzer::wypiszWszystkichUzytkownikow() {
 }
 
 void UzytkownikMenadzer::logowanieUzytkownika() {
+    system("cls");
     string login = "", haslo = "";
 
     cout << "Podaj login: ";
